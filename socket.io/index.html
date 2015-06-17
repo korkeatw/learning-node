@@ -1,0 +1,22 @@
+<!Doctype html>
+<html>
+<head>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        var socket = io.connect("http://localhost:8084");
+
+        socket.on("connect", function(msg){
+            console.log('connected');
+        });
+
+        socket.on("message", function(msg){
+            var disp = document.getElementById("display");
+            var conts = msg.replace(/[\n\r]/g, "<br/>");
+            disp.innerHTML = conts;
+        });
+    </script>
+</head>
+<body>
+    <div id="display"></div>
+</body>
+</html>

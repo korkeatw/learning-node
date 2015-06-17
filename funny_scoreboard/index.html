@@ -1,0 +1,28 @@
+<!Doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Funny Scoreboard</title>
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="/js/jquery.min.js"></script>
+        <script src="/js/bootstrap.min.js"></script>
+        <script src="/js/main.js"></script>
+    </head>
+    <body>
+        <h1>UEFA Champions League Final</h1>
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <input type="input" id="user" placeholder="enter username">
+                <ul class="scoreboard">
+                    <li onclick="return cheer_this_team('fcb')"><img src="/media/fcb-logo.png"></li>
+                    <li><span id="fcb_score">0</span></li>
+                    <li><span>:</span></li>
+                    <li><span id="juve_score">0</span></li>
+                    <li onclick="return cheer_this_team('juve')"><img src="/media/juve-logo.png"></li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

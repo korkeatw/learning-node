@@ -1,0 +1,12 @@
+.scoreboard {
+    list-style: none;
+    margin: auto;
+    text-align: center;
+}
+.scoreboard > li {
+    display: inline-block;
+    font-weight: bold;
+    font-size: 120px;
+}
+.green { color: #339900; }
+.black { color: #333333; }
