@@ -32,7 +32,6 @@ function serverHandler (req, res) {
  * Redis connection
  */
 var client = redis.createClient(REDIS_PORT, REDIS_HOST),
-    sub = redis.createClient(REDIS_PORT, REDIS_HOST),
     pub = redis.createClient(REDIS_PORT, REDIS_HOST);
 
 client.on('error', function (err) {
@@ -43,21 +42,21 @@ client.on('error', function (err) {
  * Websocket listener
  */
 io.on('connection', function (socket) {
-    sub.subscribe('score');
+    var sub = redis.createClient(REDIS_PORT, REDIS_HOST);
 
     client.hgetall('score', function (err, score) {
         socket.emit('update score', score);
     });
 
     sub.on('message', function (chan, msg) {
-        if (chan === 'score') {
-            socket.emit('update score', {score: score});
-        } else {
-
-        }
+        socket.emit('send hey', {name: chan});
+        client.hgetall('score', function (err, score) {
+            socket.emit('update score', score);
+        });
     });
 
     socket.on('select team', function (cheer) {
+        console.log(cheer);
         client.srem('fcb', cheer.user);
         client.srem('juve', cheer.user);
         client.sadd(cheer.team, cheer.user);

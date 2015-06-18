@@ -15,6 +15,14 @@ socket.on('update score', function (score) {
     });
 });
 
+socket.on('send hey', function (team) {
+    var elm = $('span[class*="green"]').attr('id'),
+        myteam = elm.substring(0, elm.indexOf('_'));
+    if(myteam === team.name) {
+        document.getElementById('hey').play();
+    }
+});
+
 function cheer_this_team(team) {
     highlight_team(team);
     var user = $('#user').val();

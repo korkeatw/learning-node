@@ -17,11 +17,11 @@ app.use('/public/css', express.static(__dirname + '/public/css'));
 app.use('/public/images', express.static(__dirname + '/public/images'));
 
 app.get('/', function (req, res) {
-    res.render('index', {name: 'Kor'});    
+    res.render('index', {name: 'Alice'});    
 });
 
 app.get('/status', function (req, res) {
-    res.send('It\'s works!');   
+    res.send('<h1>It\'s works!</h1>');   
 });
 
 var server = app.listen(APP_PORT, function () {
